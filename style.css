@@ -1,7 +1,7 @@
 body{
     font-family: Arial, sans-serif;
     padding: 20px;
-    background-color: af0f0f0;
+    background-color: #f0f0f0;
 
 }
 form{
@@ -25,16 +25,23 @@ ul{
     list-style-type: none;
     padding:0;
 }
-li{
+li{ /* referencia elemento */
     background: white;
     padding: 10px;
     margin-bottom: 5px;
     border-radius: 4px;
 }
 
-.container-botoes {
+ .container-botoes {  /*# Referencia uma classe*/
     display: flex;
     justify-content: center;
     gap: 10px; /* Espaço entre os botões */
     margin-bottom: 20px;
+}
+
+#form-catalogo { /*# referencia um id*/
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center;     /* Centraliza verticalmente */
+    gap: 10px;               /* Espaço entre os itens */
 }
