@@ -1,3 +1,4 @@
+
 body{
     font-family: Arial, sans-serif;
     padding: 20px;
@@ -32,7 +33,7 @@ li{ /* referencia elemento */
     border-radius: 4px;
 }
 
- .container-botoes {  /*# Referencia uma classe*/
+ .container-botoes {  /* Referencia uma classe*/
     display: flex;
     justify-content: center;
     gap: 10px; /* Espaço entre os botões */
@@ -44,4 +45,10 @@ li{ /* referencia elemento */
     justify-content: center; /* Centraliza horizontalmente */
     align-items: center;     /* Centraliza verticalmente */
     gap: 10px;               /* Espaço entre os itens */
+}
+h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    gap: 10px;
 }
