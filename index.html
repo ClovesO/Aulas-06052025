@@ -15,10 +15,15 @@ INDEX.HTML
   
 <!-- cards -->
   <div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
+  <img src="./graficos/informacoes.png" class="card-img-top" alt="...">
   <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+    <h5 class="card-title">Card Informativo</h5>
+    <p class="card-text">
+      <img src="./graficos/livros.png" alt="Logo"> Livros: <span id="cardLivros">0</span>
+      <img src="./graficos/placadecircuito.png" alt="Logo">Eletrônicos: <span id="cardEletronicos">0</span>
+      <img src="./graficos/papelaria.png" alt="Logo">Papelaria: <span id="cardPapelaria">0</span>
+      <img src="./graficos/Utilidades.png" alt="Logo">Utilidades: <span id="cardUtilidades">0</span>
+    </p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
 
   </div>
@@ -28,7 +33,7 @@ INDEX.HTML
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
     <div class="container-fluid px-3">
       <img src="./graficos/icons1.png" alt="Logo" width="40" class="d-inline-block align-text-top">
-      <span class="navbar-brand mb-0 h1 ms-2 fs-4">Catálogo de Itens</span>
+      <span class="navbar-brand mb-0 h1 ms-2 fs-4">High technology company</span>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNav" aria-controls="menuNav" aria-expanded="false" aria-label="Alternar navegação">
       <span class="navbar-toggler-icon"></span>
@@ -39,7 +44,7 @@ INDEX.HTML
           <li class="nav-item align-self-end">
             <a class="nav-link active fs-6" aria-current="page" href="./index.html">Cadastro</a>
           <li class="nav-item align-self-end">
-            <a class="nav-link active fs-6" aria-current="page" href="Painel.html">Painel</a>
+            <a class="nav-link fs-6" aria-current="page" href="Painel.html">Painel</a>
             
           </li>
         </ul>
@@ -49,6 +54,7 @@ INDEX.HTML
 
  
   <form id="form-catalogo2" class="mb-4 px-5" style="max-width: 600px; margin: auto;" >
+
 
     <div class="mb-3">
       <label for="nomeItem" class="form-label">Nome do Item</label>
@@ -79,6 +85,7 @@ INDEX.HTML
   <table class="table table-bordered table-hover">
   <thead class="table-dark text-center">
     <tr>
+      <th style="width: 5%;">Código</th>
       <th style="width: 40%;">Nome</th>
       <th style="width: 30%;">Categoria</th>
       <th style="width: 30%;">Ações</th>
@@ -97,6 +104,8 @@ INDEX.HTML
 
   <!--Destaque visual para o link da página que está ativa -->
 <script>
+ <!--Destaque visual para o link da página que está ativa -->
+
 // filepath: c:\Users\cosab\Desktop\Trabalho270525\index.html
 document.querySelectorAll('.nav-link').forEach(link => {
   link.addEventListener('click', function() {
@@ -105,10 +114,11 @@ document.querySelectorAll('.nav-link').forEach(link => {
   });
 });
 </script>
-<span id="cardLivros">0</span>
-<span id="cardEletronicos">0</span>
-<span id="cardPapelaria">0</span>
-<span id="cardUtilidades">0</span>
+
+
+<button type="button" class="btnmodalcadastro">Cadastro</button>
+
+
 </body>
 
 </html>

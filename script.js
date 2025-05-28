@@ -1,5 +1,9 @@
 /*SCRIPT.JS*/
+let contadorCodigo = 1;
 
+function gerarCodigo() {
+return contadorCodigo++;
+}
 
 const form = document.getElementById('form-catalogo2');
 const lista = document.getElementById('listaItens');
@@ -9,6 +13,7 @@ form.addEventListener('submit', function(event) {
 
   const nome = document.getElementById('nomeItem').value;
   const categoria = document.getElementById('categoriaItem').value;
+  const codigo = gerarCodigo(); // gera um código único para o item
 
  /*  const novoItem = document.createElement('li');
  novoItem.innerHTML = `
@@ -19,8 +24,10 @@ form.addEventListener('submit', function(event) {
 
   const novaLinha = document.createElement('tr');
   novaLinha.innerHTML = `
+  <td><em>${codigo}</em></td>
   <td><strong>${nome}</strong></td>
   <td><em>${categoria}</em></td>
+  
   <td class="text-center">
     <button class="btn btn-warning btn-sm editar">Editar</button>
     <button class="btn btn-outline-danger btn-sm remover">Remover</button>
@@ -29,7 +36,7 @@ form.addEventListener('submit', function(event) {
   lista.appendChild(novaLinha);
  
  
-  atualizarContadores(); // <-- Adicione esta linha aqui
+  atualizarContadores(); 
   form.reset();
  
 });
@@ -46,7 +53,9 @@ lista.addEventListener('click', function(event) {
     if (confirm("Tem certeza que deseja remover este item?")) {
       /* event.target.parentElement.remove(); */
       event.target.closest('tr').remove();
+      atualizarContadores(); // Atualiza os contadores após remoção
     }
+    atualizarContadores();
   }
 
  /*  if (event.target.classList.contains('editar')) {
@@ -77,7 +86,9 @@ lista.addEventListener('click', function(event) {
     if (novoNome && novaCategoria) {
       linha.children[0].innerHTML = `<strong>${novoNome}</strong>`;
       linha.children[1].innerHTML = `<em>${novaCategoria}</em>`;
+      
     }
+    atualizarContadores(); // Atualiza os contadores após edição
   }
 });
 
@@ -181,7 +192,7 @@ Utilidades: 0
 };
 
 linhas.forEach(linha => {
-const categoria = linha.cells[1].innerText;
+const categoria = linha.cells[2].innerText;
 if (contagem[categoria] !== undefined) {
 contagem[categoria]++;
 }
@@ -190,3 +201,4 @@ document.getElementById("cardLivros").innerText = contagem.Livros;
 document.getElementById("cardEletronicos").innerText = contagem.Eletrônicos;
 // Repita para os demais
 }
+
