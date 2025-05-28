@@ -1,54 +1,75 @@
+STYLE.CSS
 
-body{
+
+body {
     font-family: Arial, sans-serif;
-    padding: 20px;
     background-color: #f0f0f0;
-
-}
-form{
+  }
+ 
+  form {
     margin-bottom: 20px;
-}
-input {
-        /* display: flex; */
-    /* justify-content: center; */
+  }
+ 
+  input {
     padding: 8px;
     margin-right: 10px;
-
-}
-button{
-    padding: 20px;
+  }
+ 
+  button {
+    padding: 8px 12px;
     background-color: #007bff;
     color: white;
     border: none;
     cursor: pointer;
-}
-ul{
+  }
+ 
+  ul {
     list-style-type: none;
-    padding:0;
-}
-li{ /* referencia elemento */
+    padding: 0;
+  }
+ 
+  /* li {
     background: white;
     padding: 10px;
     margin-bottom: 5px;
     border-radius: 4px;
+  } */
+ 
+ /*  button.remover {
+  background: none;
+  border: none;
+  color: grey;
+  font-size: 15px;
+  cursor: pointer;
+  float: right;
+  align-items: center;
+  padding: 0px;
+} */
+
+/* button.remover:hover {
+  color: darkred;
+} */
+
+.container-botoes {
+  display: flex;
+  gap: 10px;              
+  margin-top: 20px;
+  margin-bottom: 20px;
+  justify-content: flex-start;
+  flex-wrap: wrap;        
 }
 
- .container-botoes {  /* Referencia uma classe*/
-    display: flex;
-    justify-content: center;
-    gap: 10px; /* Espaço entre os botões */
-    margin-bottom: 20px;
+.container-botoes button {
+  padding: 8px 14px;
+ 
+  font-size: 14px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-#form-catalogo { /*# referencia um id*/
-    display: flex;
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: center;     /* Centraliza verticalmente */
-    gap: 10px;               /* Espaço entre os itens */
-}
-h1 {
-    display: flex;
-    justify-content: center;
-    align-items: center; 
-    gap: 10px;
+.container-botoes button:hover {
+  background-color: #0056b3;
 }

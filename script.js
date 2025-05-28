@@ -1,58 +1,108 @@
-const form = document.getElementById('form-catalogo')
-const list = document.getElementById('listaItens');
+/*SCRIPT.JS*/
 
-form.addEventListener('submit',
-    function(event){
-        event.preventDefault();
-    const nome = document.getElementById('nomeItem').value;
-    const categoria = document.getElementById('categoriaItem').value;
-    
-    const novoItem = document.createElement('li');
-    // novoItem.textContent = nome + " (" + categoria + ")";
-    //novoItem.innerHTML = `${nome} (${categoria}) <button class="remover" >Remover</button>`; //id="btnRemover"
-    novoItem. innerHTML = `
-    <strong>${nome}</strong><em>(${categoria})</em>
-   <button class="editar">Editar</button>
-   <button class="remover">Remover</button>
-   `;
-   list.appendChild(novoItem);
-        
-form.reset();
-    });
-list.addEventListener('click', function(event) {
+
+const form = document.getElementById('form-catalogo2');
+const lista = document.getElementById('listaItens');
+
+form.addEventListener('submit', function(event) {
+  event.preventDefault(); // impede o recarregamento
+
+  const nome = document.getElementById('nomeItem').value;
+  const categoria = document.getElementById('categoriaItem').value;
+
+ /*  const novoItem = document.createElement('li');
+ novoItem.innerHTML = `
+  <strong>${nome}</strong> <em>(${categoria})</em>
+  <button class="editar">Editar</button>
+  <button class="remover">Remover</button>`;
+  lista.appendChild(novoItem); */
+
+  const novaLinha = document.createElement('tr');
+  novaLinha.innerHTML = `
+  <td><strong>${nome}</strong></td>
+  <td><em>${categoria}</em></td>
+  <td class="text-center">
+    <button class="btn btn-warning btn-sm editar">Editar</button>
+    <button class="btn btn-outline-danger btn-sm remover">Remover</button>
+  </td>
+  `;
+  lista.appendChild(novaLinha);
+ 
+ 
+  atualizarContadores(); // <-- Adicione esta linha aqui
+  form.reset();
+ 
+});
+ 
+
+
+lista.addEventListener('click', function(event) {
+
+  const botao = event.target;
+  const linha = botao.closest('tr');
+
+
   if (event.target.classList.contains('remover')) {
     if (confirm("Tem certeza que deseja remover este item?")) {
-      event.target.parentElement.remove();
+      /* event.target.parentElement.remove(); */
+      event.target.closest('tr').remove();
     }
   }
 
-  if (event.target.classList.contains('editar')) {
-    const list = event.target.parentElement;
+ /*  if (event.target.classList.contains('editar')) {
+    const li = event.target.parentElement;
 
-    const textoOriginal = list.querySelector('strong').textContent;
-    const categoriaOriginal = list.querySelector('em').textContent.replace(/[()]/g, '');
+    const textoOriginal = li.querySelector('strong').textContent;
+    const categoriaOriginal = li.querySelector('em').textContent.replace(/[()]/g, '');
 
     const novoNome = prompt("Editar nome:", textoOriginal);
     const novaCategoria = prompt("Editar categoria:", categoriaOriginal);
 
     if (novoNome && novaCategoria) {
-      list.innerHTML = `
+      li.innerHTML = `
         <strong>${novoNome}</strong> <em>(${novaCategoria})</em>
         <button class="editar">Editar</button>
         <button class="remover">Remover</button>
       `;
     }
+  } */
+
+      if (botao.classList.contains('editar')) {
+    const nomeAtual = linha.children[0].textContent.trim();
+    const categoriaAtual = linha.children[1].textContent.trim();
+
+    const novoNome = prompt("Editar nome:", nomeAtual);
+    const novaCategoria = prompt("Editar categoria:", categoriaAtual);
+
+    if (novoNome && novaCategoria) {
+      linha.children[0].innerHTML = `<strong>${novoNome}</strong>`;
+      linha.children[1].innerHTML = `<em>${novaCategoria}</em>`;
+    }
   }
 });
+
+
+
+
+
+
+
+
 
 document.getElementById('exportar').addEventListener('click', function() {
   const itens = [];
 
-  list.querySelectorAll('li').forEach(li => {
+  /* lista.querySelectorAll('li').forEach(li => {
     const nome = li.querySelector('strong')?.textContent;
-    const categoria = li.querySelector('em')?.textContent.replace(/[()]/g, '');
+    const categoria = li.querySelector('em')?.textContent.replace(/[()]/g, ''); */
+   
+    lista.querySelectorAll('tr').forEach(linha => {
+    const nome = linha.children[0]?.textContent.trim();
+    const categoria = linha.children[1]?.textContent.trim();
+
 
     itens.push({ nome, categoria });
+   
   });
 
   const json = JSON.stringify(itens, null, 2); // transforma em JSON formatado
@@ -64,6 +114,7 @@ document.getElementById('exportar').addEventListener('click', function() {
   link.download = "catalogo.json";
   link.click();
 });
+
 
 
 
@@ -84,17 +135,32 @@ document.getElementById('inputImportar').addEventListener('change', function(eve
     try {
       const dados = JSON.parse(conteudo);
 
-      list.innerHTML = ''; // limpa a lista atual
+      lista.innerHTML = ''; // limpa a lista atual
 
-      dados.forEach(item => {
+      /* dados.forEach(item => {
         const novoItem = document.createElement('li');
         novoItem.innerHTML = `
           <strong>${item.nome}</strong> <em>(${item.categoria})</em>
           <button class="editar">Editar</button>
           <button class="remover">Remover</button>
         `;
-        list.appendChild(novoItem);
+        lista.appendChild(novoItem);
       });
+ */
+
+      dados.forEach(item => {
+        const novaLinha = document.createElement('tr');
+        novaLinha.innerHTML = `
+          <td><strong>${item.nome}</strong></td>
+          <td><em>${item.categoria}</em></td>
+          <td>
+            <button class="btn btn-warning btn-sm editar">Editar</button>
+            <button class="btn btn-outline-danger btn-sm remover">Remover</button>
+          </td>
+        `;
+        lista.appendChild(novaLinha);
+      });
+
 
     } catch (erro) {
       alert("Erro ao ler o arquivo JSON.");
@@ -103,3 +169,24 @@ document.getElementById('inputImportar').addEventListener('change', function(eve
 
   leitor.readAsText(arquivo);
 });
+
+// Atualiza contadores no card
+function atualizarContadores() {
+const linhas = document.querySelectorAll("#listaItens tr"); 
+let contagem = {
+Livros: 0,
+Eletrônicos: 0,
+Papelaria: 0,
+Utilidades: 0
+};
+
+linhas.forEach(linha => {
+const categoria = linha.cells[1].innerText;
+if (contagem[categoria] !== undefined) {
+contagem[categoria]++;
+}
+});
+document.getElementById("cardLivros").innerText = contagem.Livros;
+document.getElementById("cardEletronicos").innerText = contagem.Eletrônicos;
+// Repita para os demais
+}
