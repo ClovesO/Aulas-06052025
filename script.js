@@ -132,8 +132,9 @@ document.getElementById('exportar').addEventListener('click', function() {
 document.getElementById('botaoImportar').addEventListener('click', function() {
   document.getElementById('inputImportar').click(); // força o clique no input invisível
 });
+//Estou alterando
 
-
+//termino estou alterando
 
 document.getElementById('inputImportar').addEventListener('change', function(event) {
   const arquivo = event.target.files[0];
@@ -202,3 +203,43 @@ document.getElementById("cardEletronicos").innerText = contagem.Eletrônicos;
 // Repita para os demais
 }
 
+
+document.getElementById('btnModalCadastro').addEventListener('click', function() {
+  var modal = new bootstrap.Modal(document.getElementById('modalCadastro'));
+  modal.show();
+});
+/*
+// Botão cadastro no modal
+document.getElementById('form-modal-cadastro').addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  const nome = document.getElementById('modalNomeItem').value;
+  const categoria = document.getElementById('modalCategoriaItem').value;
+
+  // Gere um código sequencial ou aleatório, conforme sua lógica
+  const codigo = Date.now();
+
+  const lista = document.getElementById('listaItens');
+  const novaLinha = document.createElement('tr');
+  novaLinha.innerHTML = `
+    <td><em>${codigo}</em></td>
+    <td><strong>${nome}</strong></td>
+    <td><em>${categoria}</em></td>
+    <td class="text-center">
+      <button class="btn btn-warning btn-sm editar">Editar</button>
+      <button class="btn btn-outline-danger btn-sm remover">Remover</button>
+    </td>
+  `;
+  lista.appendChild(novaLinha);
+
+  // Atualize os contadores, se necessário
+  if (typeof atualizarContadores === "function") atualizarContadores();
+
+  // Feche o modal
+  var modal = bootstrap.Modal.getInstance(document.getElementById('modalCadastro'));
+  modal.hide();
+
+  // Limpe o formulário do modal
+  event.target.reset();
+});
+//termino botão cadastro */
