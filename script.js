@@ -204,20 +204,20 @@ document.getElementById("cardEletronicos").innerText = contagem.Eletrônicos;
 }
 
 
+//Início do botão Cadastrar do modal
+// Abre o modal ao clicar no botão
 document.getElementById('btnModalCadastro').addEventListener('click', function() {
   var modal = new bootstrap.Modal(document.getElementById('modalCadastro'));
   modal.show();
 });
-/*
-// Botão cadastro no modal
+
+// Cadastra o item do modal na tabela principal
 document.getElementById('form-modal-cadastro').addEventListener('submit', function(event) {
   event.preventDefault();
 
-  const nome = document.getElementById('modalNomeItem').value;
-  const categoria = document.getElementById('modalCategoriaItem').value;
-
-  // Gere um código sequencial ou aleatório, conforme sua lógica
-  const codigo = Date.now();
+  const nome = document.getElementById('nomeItemmodal').value;
+  const categoria = document.getElementById('categoriaItemmodal').value;
+  const codigo = Date.now(); // Ou use sua função gerarCodigo()
 
   const lista = document.getElementById('listaItens');
   const novaLinha = document.createElement('tr');
@@ -242,4 +242,13 @@ document.getElementById('form-modal-cadastro').addEventListener('submit', functi
   // Limpe o formulário do modal
   event.target.reset();
 });
-//termino botão cadastro */
+
+// ...após cadastrar e fechar o modal:
+var modal = bootstrap.Modal.getInstance(document.getElementById('modalCadastro'));
+modal.hide();
+
+// Foca no campo do formulário principal
+document.getElementById('nomeItem').focus();
+
+// Limpa o formulário do modal
+event.target.reset();
