@@ -77,15 +77,15 @@ lista.addEventListener('click', function(event) {
   } */
 
       if (botao.classList.contains('editar')) {
-    const nomeAtual = linha.children[0].textContent.trim();
-    const categoriaAtual = linha.children[1].textContent.trim();
+    const nomeAtual = linha.children[1].textContent.trim();
+    const categoriaAtual = linha.children[2].textContent.trim();
 
     const novoNome = prompt("Editar nome:", nomeAtual);
     const novaCategoria = prompt("Editar categoria:", categoriaAtual);
 
     if (novoNome && novaCategoria) {
-      linha.children[0].innerHTML = `<strong>${novoNome}</strong>`;
-      linha.children[1].innerHTML = `<em>${novaCategoria}</em>`;
+      linha.children[1].innerHTML = `<strong>${novoNome}</strong>`;
+      linha.children[2].innerHTML = `<em>${novaCategoria}</em>`;
       
     }
     atualizarContadores(); // Atualiza os contadores após edição
@@ -200,6 +200,9 @@ contagem[categoria]++;
 });
 document.getElementById("cardLivros").innerText = contagem.Livros;
 document.getElementById("cardEletronicos").innerText = contagem.Eletrônicos;
+document.getElementById("cardPapelaria").innerText = contagem.Papelaria;
+document.getElementById("cardUtilidades").innerText = contagem.Utilidades;
+
 // Repita para os demais
 }
 
