@@ -115,7 +115,21 @@ document.querySelectorAll('.nav-link').forEach(link => {
 <!-- Inicio modal -->
 <!-- Botão para abrir o modal -->
 <button type="button" id="btnModalCadastro" class="btn btn-primary">Cadastro modal</button>
+        <!-- inicio novo dropdown em aula -->
+<div class="mb-3">
+            <label for="categoriaItemmodal" class="form-label">Filtrar categoria:</label>
+            <select class="form-control" id="categoriaItemmodal" onchange="filtrarTabela()" required>
+              <option value="">Selecione...</option>
+              <option value="">Todos</option>
+              <option value="Livros">Livros</option>
+              <option value="Eletrônicos">Eletrônicos</option>
+              <option value="Papelaria">Papelaria</option>
+              <option value="Utilidades">Utilidades</option>
+  </select>
+          </div>
+       
 
+        <!-- fim novo dopdown em aula -->
 <!-- Modal -->
 <div class="modal fade" id="modalCadastro" tabindex="-1">
   <div class="modal-dialog">
@@ -132,7 +146,7 @@ document.querySelectorAll('.nav-link').forEach(link => {
           </div>
           <div class="mb-3">
             <label for="categoriaItemmodal" class="form-label">Categoria</label>
-            <select class="form-control" id="categoriaItemmodal" required>
+            <select class="form-control" id="categoriaItemconsulta" required>
               <option value="">Selecione...</option>
               <option value="Livros">Livros</option>
               <option value="Eletrônicos">Eletrônicos</option>
@@ -141,6 +155,8 @@ document.querySelectorAll('.nav-link').forEach(link => {
   </select>
           </div>
         </div>
+
+
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           <button type="submit" class="btn btn-primary">Cadastrar</button>

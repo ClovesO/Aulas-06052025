@@ -255,3 +255,13 @@ document.getElementById('nomeItem').focus();
 
 // Limpa o formulário do modal
 event.target.reset();
+
+function filtrarTabela(){
+    const filtro = document.getElementById('categoriaItemconsulta').value;
+    const linhas = document.querySelectorAll('#listaItens tbody');
+
+    linhas.forEach(tr => {
+      const categoria = tr.cell[2].innerText;
+      trstyle.display = (filtro ==='' || categoria === filtro) ? '' : 'nome';
+})
+}
